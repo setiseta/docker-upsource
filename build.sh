@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REPO="seti/upsource"
+REPO="esycat/upsource"
 TAG=${1:-"2.0.4"}
 
 docker build -t $REPO:$TAG $(dirname $0) || exit $?
