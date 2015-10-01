@@ -20,5 +20,5 @@ ADD run.sh /opt/upsource/
 RUN chmod o+rx run.sh
 USER upsource
 ENTRYPOINT ["/opt/upsource/run.sh"]
-EXPOSE 80
+EXPOSE 8080
 VOLUME ["$APP_HOME"]
