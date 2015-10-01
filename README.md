@@ -16,7 +16,7 @@ mkdir $DIR/data
 chown 1000:1000 $DIR/data
 docker run -d \
 	--name $NAME  \
-	-p 8080:8080 \
+	-p 80:80 \
 	--restart=always \
 	-v $DIR/data:/data
 	seti/upsource
