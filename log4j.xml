@@ -1,0 +1,135 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE log4j:configuration SYSTEM "./log4j.dtd">
+<log4j:configuration>
+  <appender name="CONSOLE-WARN" class="org.apache.log4j.ConsoleAppender">
+    <param name="target" value="System.err"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d] %6p - %30.30c - %m %n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="WARN"/>
+    </filter>
+  </appender>
+
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+    <param name="target" value="System.out"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="* %m %n"/>
+    </layout>
+  </appender>
+
+  <appender name="ROLL-DEBUG" class="org.apache.log4j.RollingFileAppender">
+    <param name="file" value="${bundleProcess.logs.dir}/debug.log"/>
+    <param name="maxBackupIndex" value="3"/>
+
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d] %6p - %30.30c - %m %n"/>
+    </layout>
+  </appender>
+
+  <appender name="ROLL-INFO" class="org.apache.log4j.RollingFileAppender">
+    <param name="file" value="${bundleProcess.logs.dir}/info.log"/>
+    <param name="maxBackupIndex" value="3"/>
+
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d] %6p - %30.30c - %m %n"/>
+    </layout>
+
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="INFO"/>
+    </filter>
+  </appender>
+
+  <appender name="ROLL-WARN" class="org.apache.log4j.RollingFileAppender">
+    <param name="file" value="${bundleProcess.logs.dir}/warn.log"/>
+    <param name="maxBackupIndex" value="3"/>
+
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d] %6p - %30.30c - %m %n"/>
+    </layout>
+
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="WARN"/>
+    </filter>
+  </appender>
+
+  <appender name="ROLL-ERROR" class="org.apache.log4j.RollingFileAppender">
+    <param name="file" value="${bundleProcess.logs.dir}/error.log"/>
+    <param name="maxBackupIndex" value="3"/>
+
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d] %6p - %30.30c - %m %n"/>
+    </layout>
+
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="ERROR"/>
+    </filter>
+  </appender>
+
+  <appender name="ROLL-ACCESS-DEFAULT" class="org.apache.log4j.RollingFileAppender">
+    <param name="file" value="${bundleProcess.logs.dir}/access.log"/>
+    <param name="maxBackupIndex" value="3"/>
+    <param name="ImmediateFlush" value="false" />
+    <param name="BufferedIO" value="true" />
+    <param name="BufferSize" value="16" /> <!-- In KB, Default is 8KB -->
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d] %6p - %30.30c - %m %n"/>
+    </layout>
+  </appender>
+
+  <!--appender name="ROLL-ACCESS-EXAMPLE-SERVLET-CONTAINER" class="org.apache.log4j.RollingFileAppender">
+    <param name="file" value="${bundleProcess.logs.dir}/access_exampleServletContainer.log"/>
+    <param name="maxBackupIndex" value="3"/>
+    <param name="ImmediateFlush" value="false" />
+    <param name="BufferedIO" value="true" />
+    <param name="BufferSize" value="16" />
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern" value="[%d] %6p - %30.30c - %m %n"/>
+    </layout>
+  </appender-->
+
+  <category name="org.eclipse.jetty">
+    <priority value="ERROR"/>
+  </category>
+
+  <category name="com.jetbrains.bundle.proxy.jetty.ProxyServlet">
+    <priority value="ERROR"/>
+  </category>
+
+  <category name="com.jetbrains.bundle.proxy.jetty.WebSocketProxySocket">
+    <priority value="ERROR"/>
+  </category>
+
+  <!-- This is a base category for all access logs. Each access log record has INFO priority.
+       Each servlet container started inside Bundle process stores its access log in some nested category.
+       The exact name of the category is 'org.eclipse.jetty.server.RequestLog.<servletContainerServiceId>',
+        where <servletContainerServiceId> is an identifier registered in bundle_build.proeprties as a value of property
+        service.<id>.bundledin=<servletContainerServiceId>.
+       So one may define nested category in order to redirect log records of particular servlet container instance to some separate file.
+       (For instance, see commented appender for servlet container with id 'exampleServletContainer' and its category 'org.eclipse.jetty.server.RequestLog.exampleServletContainer')
+       -->
+  <category name="org.eclipse.jetty.server.RequestLog" additivity="false">
+    <priority value="ERROR"/>
+    <appender-ref ref="ROLL-ACCESS-DEFAULT"/>
+  </category>
+
+  <!--category name="org.eclipse.jetty.server.RequestLog.exampleServletContainer" additivity="false">
+    <priority value="INFO"/>
+    <appender-ref ref="ROLL-ACCESS-EXAMPLE-SERVLET-CONTAINER"/>
+  </category-->
+
+  <category name="bundle.startup">
+    <priority value="ERROR"/>
+    <appender-ref ref="CONSOLE"/>
+  </category>
+
+  <root>
+    <priority value="DEBUG"/>
+    <appender-ref ref="CONSOLE-WARN"/>
+    <appender-ref ref="ROLL-DEBUG"/>
+    <appender-ref ref="ROLL-INFO"/>
+    <appender-ref ref="ROLL-WARN"/>
+    <appender-ref ref="ROLL-ERROR"/>
+  </root>
+
+</log4j:configuration>
