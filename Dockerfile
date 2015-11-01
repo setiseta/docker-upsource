@@ -2,7 +2,7 @@ FROM java:latest
 
 MAINTAINER Seti <seti@setadesign.net>
 
-ENV VERSION 2.5.3784
+ENV VERSION 2.5.4556
 ENV APP_HOME /data
 
 RUN curl -L https://download.jetbrains.com/upsource/upsource-$VERSION.zip -o /opt/upsource.zip && \
