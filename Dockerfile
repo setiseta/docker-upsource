@@ -17,7 +17,6 @@ RUN curl -L https://download.jetbrains.com/upsource/upsource-$VERSION.zip -o /op
 
 WORKDIR /opt/upsource
 ADD run.sh /opt/upsource/
-ADD log4j.xml /opt/upsource/lib/ext/log4j.xml
 RUN chmod o+rx run.sh
 USER upsource
 ENTRYPOINT ["/opt/upsource/run.sh"]
