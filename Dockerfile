@@ -3,7 +3,7 @@ FROM java:latest
 MAINTAINER Seti <seti@setadesign.net>
 
 ENV APP_VERSION 2.5
-ENV APP_BUILD $APP_VERSION.4995
+ENV APP_BUILD $APP_VERSION.5047
 ENV APP_HOME /data
 
 RUN curl -L https://download.jetbrains.com/upsource/upsource-$APP_BUILD.zip -o /opt/upsource.zip && \
