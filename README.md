@@ -2,7 +2,7 @@
 
 [Upsource](https://jetbrains.com/upsource/) is a repository browsing and code review tool from [JetBrains](https://jetbrains.com/).
 
-- Version 2.5.5047
+- Version 2.5.5074
 - EAP Version 2.5.3784 (Early Access - outdated)
 
 ## Usage
