@@ -6,8 +6,9 @@ ENV APP_VERSION 3.0
 ENV APP_BUILD $APP_VERSION.4291
 ENV APP_HOME /data
 
-RUN curl --insecure -L https://download.jetbrains.com/upsource/upsource-$APP_BUILD.zip -o /opt/upsource.zip && \
-	cd /opt/ && \
+RUN mkdir /opt/upsource -p && \
+	curl --insecure -L https://download.jetbrains.com/upsource/upsource-$APP_BUILD.zip -o /opt/upsource.zip && \
+	cd /opt/upsource && \
 	unzip /opt/upsource.zip && \
 	mv Upsource upsource && \
 	rm -f /opt/upsource.zip && \
