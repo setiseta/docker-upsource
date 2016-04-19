@@ -10,7 +10,6 @@ RUN mkdir /opt/upsource -p && \
 	curl --insecure -L https://download.jetbrains.com/upsource/upsource-$APP_BUILD.zip -o /opt/upsource.zip && \
 	cd /opt/upsource && \
 	unzip /opt/upsource.zip && \
-	mv Upsource upsource && \
 	rm -f /opt/upsource.zip && \
 	mkdir $APP_HOME && \
 	groupadd -r upsource && \
