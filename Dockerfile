@@ -8,9 +8,10 @@ ENV APP_HOME /data
 
 RUN mkdir /opt/upsource -p && \
 	curl --insecure -L https://download.jetbrains.com/upsource/upsource-$APP_BUILD.zip -o /opt/upsource.zip && \
-	cd /opt/upsource && \
+	cd /opt && \
 	unzip /opt/upsource.zip && \
 	rm -f /opt/upsource.zip && \
+	mv /opt/upsource-* /opt/upsource && \
 	mkdir $APP_HOME && \
 	groupadd -r upsource && \
 	useradd -r -g upsource -u 1000 -d $APP_HOME upsource && \
