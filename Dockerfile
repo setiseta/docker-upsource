@@ -3,7 +3,7 @@ FROM java:latest
 MAINTAINER Seti <seti@setadesign.net>
 
 ENV APP_VERSION 3.0
-ENV APP_BUILD $APP_VERSION.4291
+ENV APP_BUILD $APP_VERSION.4364
 ENV APP_HOME /data
 
 RUN mkdir /opt/upsource -p && \
