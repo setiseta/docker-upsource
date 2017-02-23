@@ -2,8 +2,8 @@ FROM java:latest
 
 MAINTAINER Seti <seti@setadesign.net>
 
-ENV APP_VERSION 3.5
-ENV APP_BUILD $APP_VERSION.3616
+ENV APP_VERSION 2017.1
+ENV APP_BUILD $APP_VERSION.1781
 ENV APP_HOME /data
 
 RUN curl --insecure -L https://download.jetbrains.com/upsource/upsource-$APP_BUILD.zip -o /opt/upsource.zip && \
