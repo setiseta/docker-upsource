@@ -3,8 +3,8 @@
 if [ ! -e $APP_HOME/conf ];
 then
 	echo "first run: starting configure"
-	mv /opt/upsource/conf $APP_HOME/
-	ln -s $APP_HOME/conf /opt/upsource/conf
+	cp -rp /opt/upsource/conftemplate $APP_HOME/conf
+	ln -s $APP_HOME/conf /optupsource/conf
 	bin/upsource.sh configure \
 		--backups-dir $APP_HOME/backups \
 		--data-dir    $APP_HOME/data \

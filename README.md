@@ -2,7 +2,7 @@
 
 [Upsource](https://jetbrains.com/upsource/) is a repository browsing and code review tool from [JetBrains](https://jetbrains.com/).
 
-- Version 2017.1 Build 1781, latest
+- Version 2017.1 Build 1821, latest
 - Older Versions can be found in Tag section.
 
 ## Usage
